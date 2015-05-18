@@ -31,7 +31,7 @@ public class GetParaCache_test {
         C_readLine readline;
         
         try {
-            readline=new C_readLine("C:\\Users\\Max\\Desktop\\data_get_cache.txt");
+            readline=new C_readLine("C:\\Users\\SSI\\Desktop\\data_get_cache.txt");
         } catch (FileNotFoundException ex) {
             Logger.getLogger(GetParaCache_test.class.getName()).log(Level.SEVERE, null, ex);
             return;
@@ -44,7 +44,7 @@ public class GetParaCache_test {
             System.out.println(data1.trim());
         }*/
         
-        C_WriteTeedinToFile writeerfi = new C_WriteTeedinToFile("C:\\Users\\Max\\Desktop\\data_cache.txt");
+        C_WriteTeedinToFile writeerfi = new C_WriteTeedinToFile("C:\\Users\\SSI\\Desktop\\data_cache.txt");
         while (currentn4 != null) {
             
             try {

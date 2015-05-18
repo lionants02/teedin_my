@@ -16,22 +16,22 @@
             <classpath path="${libs.jaxws21.classpath}"/>
         </taskdef>
     </target>
-    <target name="wsimport-client-DolParcelADX" depends="wsimport-init">
-        <mkdir dir="${build.generated.dir}/jax-wsCache/DolParcelADX"/>
-        <property name="wsdl-DolParcelADX" location="xml-resources/web-service-references/DolParcelADX/wsdl/164.115.20.131/adxgateway/services/DolParcelADX.wsdl"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/DolParcelADX" destdir="${build.generated.dir}/jax-wsCache/DolParcelADX" wsdl="${wsdl-DolParcelADX}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://164.115.20.131/adxgateway/services/DolParcelADX?wsdl" xnocompile="true" xendorsed="true">
-            <depends file="${wsdl-DolParcelADX}"/>
-            <produces dir="${build.generated.dir}/jax-wsCache/DolParcelADX"/>
+    <target name="wsimport-client-DolParcelSOAP" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/DolParcelSOAP"/>
+        <property name="wsdl-DolParcelSOAP" location="xml-resources/web-service-references/DolParcelSOAP/wsdl/164.115.20.131/adxgateway/services/DolParcelSOAP.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/DolParcelSOAP" destdir="${build.generated.dir}/jax-wsCache/DolParcelSOAP" wsdl="${wsdl-DolParcelSOAP}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://164.115.20.131/adxgateway/services/DolParcelSOAP?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${wsdl-DolParcelSOAP}"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/DolParcelSOAP"/>
         </wsimport>
         <copy todir="${build.generated.sources.dir}/jax-ws">
-            <fileset dir="${build.generated.dir}/jax-wsCache/DolParcelADX">
+            <fileset dir="${build.generated.dir}/jax-wsCache/DolParcelSOAP">
                 <include name="**/*.java"/>
             </fileset>
         </copy>
     </target>
-    <target name="wsimport-client-clean-DolParcelADX" depends="-init-project">
-        <delete dir="${build.generated.dir}/jax-wsCache/DolParcelADX"/>
+    <target name="wsimport-client-clean-DolParcelSOAP" depends="-init-project">
+        <delete dir="${build.generated.dir}/jax-wsCache/DolParcelSOAP"/>
         <delete dir="${build.generated.sources.dir}/jax-ws/com/nectec/ssi/max/teedinpack"/>
     </target>
-    <target name="wsimport-client-generate" depends="wsimport-client-DolParcelADX"/>
+    <target name="wsimport-client-generate" depends="wsimport-client-DolParcelSOAP"/>
 </project>

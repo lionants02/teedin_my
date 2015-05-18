@@ -1,0 +1,175 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://teedinpack.max.ssi.nectec.com" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ax2476="http://structReturn.mypack/xsd" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://teedinpack.max.ssi.nectec.com">
+   <wsdl:documentation>teedinPackService</wsdl:documentation>
+   <wsdl:types>
+      <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://structReturn.mypack/xsd">
+         <xs:complexType name="PackParcel">
+            <xs:sequence>
+               <xs:element minOccurs="0" name="AMPHURNAME" nillable="true" type="xs:string"></xs:element>
+               <xs:element minOccurs="0" name="LANDOFFICENAME" nillable="true" type="xs:string"></xs:element>
+               <xs:element minOccurs="0" name="LANDOFFICEX" type="xs:double"></xs:element>
+               <xs:element minOccurs="0" name="LANDOFFICEY" type="xs:double"></xs:element>
+               <xs:element minOccurs="0" name="MAPX" type="xs:double"></xs:element>
+               <xs:element minOccurs="0" name="MAPY" type="xs:double"></xs:element>
+               <xs:element minOccurs="0" name="PARCELNO" nillable="true" type="xs:string"></xs:element>
+               <xs:element minOccurs="0" name="PIN" nillable="true" type="xs:string"></xs:element>
+               <xs:element minOccurs="0" name="PROVINCENAME" nillable="true" type="xs:string"></xs:element>
+               <xs:element minOccurs="0" name="SURVEYNO" type="xs:int"></xs:element>
+               <xs:element minOccurs="0" name="TAMBOLNAME" nillable="true" type="xs:string"></xs:element>
+               <xs:element minOccurs="0" name="UTMLANDNO" type="xs:int"></xs:element>
+               <xs:element minOccurs="0" name="UTMMAP" nillable="true" type="xs:string"></xs:element>
+               <xs:element minOccurs="0" name="UTMSCALE" type="xs:int"></xs:element>
+               <xs:element minOccurs="0" name="area_nang" type="xs:double"></xs:element>
+               <xs:element minOccurs="0" name="area_rai" type="xs:double"></xs:element>
+               <xs:element minOccurs="0" name="area_wa" type="xs:double"></xs:element>
+               <xs:element minOccurs="0" name="status" nillable="true" type="ax2476:C_Status"></xs:element>
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="C_Status">
+            <xs:sequence>
+               <xs:element minOccurs="0" name="message_log" nillable="true" type="xs:string"></xs:element>
+               <xs:element minOccurs="0" name="statusv" type="xs:int"></xs:element>
+            </xs:sequence>
+         </xs:complexType>
+      </xs:schema>
+      <xs:schema xmlns:ax2477="http://structReturn.mypack/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://teedinpack.max.ssi.nectec.com">
+         <xs:import namespace="http://structReturn.mypack/xsd"></xs:import>
+         <xs:element name="getArea">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element minOccurs="0" name="provincecode" nillable="true" type="xs:string"></xs:element>
+                  <xs:element minOccurs="0" name="amphoecode" nillable="true" type="xs:string"></xs:element>
+                  <xs:element minOccurs="0" name="ns4no" nillable="true" type="xs:string"></xs:element>
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="getAreaResponse">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element minOccurs="0" name="return" nillable="true" type="ax2477:PackParcel"></xs:element>
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="getParcel">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element minOccurs="0" name="provincecode" nillable="true" type="xs:string"></xs:element>
+                  <xs:element minOccurs="0" name="amphoecode" nillable="true" type="xs:string"></xs:element>
+                  <xs:element minOccurs="0" name="ns4no" nillable="true" type="xs:string"></xs:element>
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="getParcelResponse">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element minOccurs="0" name="return" nillable="true" type="ax2477:PackParcel"></xs:element>
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+      </xs:schema>
+   </wsdl:types>
+   <wsdl:message name="getAreaRequest">
+      <wsdl:part name="parameters" element="ns:getArea"></wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="getAreaResponse">
+      <wsdl:part name="parameters" element="ns:getAreaResponse"></wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="getParcelRequest">
+      <wsdl:part name="parameters" element="ns:getParcel"></wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="getParcelResponse">
+      <wsdl:part name="parameters" element="ns:getParcelResponse"></wsdl:part>
+   </wsdl:message>
+   <wsdl:portType name="DolParcelSOAPPortType">
+      <wsdl:operation name="getArea">
+         <wsdl:input message="ns:getAreaRequest" wsaw:Action="urn:getArea"></wsdl:input>
+         <wsdl:output message="ns:getAreaResponse" wsaw:Action="urn:getAreaResponse"></wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="getParcel">
+         <wsdl:input message="ns:getParcelRequest" wsaw:Action="urn:getParcel"></wsdl:input>
+         <wsdl:output message="ns:getParcelResponse" wsaw:Action="urn:getParcelResponse"></wsdl:output>
+      </wsdl:operation>
+   </wsdl:portType>
+   <wsdl:binding name="DolParcelSOAPSoap11Binding" type="ns:DolParcelSOAPPortType">
+      <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"></soap:binding>
+      <wsdl:operation name="getArea">
+         <soap:operation soapAction="urn:getArea" style="document"></soap:operation>
+         <wsdl:input>
+            <soap:body use="literal"></soap:body>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"></soap:body>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="getParcel">
+         <soap:operation soapAction="urn:getParcel" style="document"></soap:operation>
+         <wsdl:input>
+            <soap:body use="literal"></soap:body>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"></soap:body>
+         </wsdl:output>
+      </wsdl:operation>
+   </wsdl:binding>
+   <wsdl:binding name="DolParcelSOAPSoap12Binding" type="ns:DolParcelSOAPPortType">
+      <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"></soap12:binding>
+      <wsdl:operation name="getArea">
+         <soap12:operation soapAction="urn:getArea" style="document"></soap12:operation>
+         <wsdl:input>
+            <soap12:body use="literal"></soap12:body>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"></soap12:body>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="getParcel">
+         <soap12:operation soapAction="urn:getParcel" style="document"></soap12:operation>
+         <wsdl:input>
+            <soap12:body use="literal"></soap12:body>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"></soap12:body>
+         </wsdl:output>
+      </wsdl:operation>
+   </wsdl:binding>
+   <wsdl:binding name="DolParcelSOAPHttpBinding" type="ns:DolParcelSOAPPortType">
+      <http:binding verb="POST"></http:binding>
+      <wsdl:operation name="getArea">
+         <http:operation location="getArea"></http:operation>
+         <wsdl:input>
+            <mime:content type="text/xml" part="parameters"></mime:content>
+         </wsdl:input>
+         <wsdl:output>
+            <mime:content type="text/xml" part="parameters"></mime:content>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="getParcel">
+         <http:operation location="getParcel"></http:operation>
+         <wsdl:input>
+            <mime:content type="text/xml" part="parameters"></mime:content>
+         </wsdl:input>
+         <wsdl:output>
+            <mime:content type="text/xml" part="parameters"></mime:content>
+         </wsdl:output>
+      </wsdl:operation>
+   </wsdl:binding>
+   <wsdl:service name="DolParcelSOAP">
+      <wsdl:port name="DolParcelSOAPHttpsSoap11Endpoint" binding="ns:DolParcelSOAPSoap11Binding">
+         <soap:address location="https://164.115.20.131/adxgateway/services/DolParcelSOAP.DolParcelSOAPHttpsSoap11Endpoint"></soap:address>
+      </wsdl:port>
+      <wsdl:port name="DolParcelSOAPHttpSoap11Endpoint" binding="ns:DolParcelSOAPSoap11Binding">
+         <soap:address location="http://164.115.20.131/adxgateway/services/DolParcelSOAP.DolParcelSOAPHttpSoap11Endpoint"></soap:address>
+      </wsdl:port>
+      <wsdl:port name="DolParcelSOAPHttpsSoap12Endpoint" binding="ns:DolParcelSOAPSoap12Binding">
+         <soap12:address location="https://164.115.20.131/adxgateway/services/DolParcelSOAP.DolParcelSOAPHttpsSoap12Endpoint"></soap12:address>
+      </wsdl:port>
+      <wsdl:port name="DolParcelSOAPHttpSoap12Endpoint" binding="ns:DolParcelSOAPSoap12Binding">
+         <soap12:address location="http://164.115.20.131/adxgateway/services/DolParcelSOAP.DolParcelSOAPHttpSoap12Endpoint"></soap12:address>
+      </wsdl:port>
+      <wsdl:port name="DolParcelSOAPHttpsEndpoint" binding="ns:DolParcelSOAPHttpBinding">
+         <http:address location="https://164.115.20.131/adxgateway/services/DolParcelSOAP.DolParcelSOAPHttpsEndpoint"></http:address>
+      </wsdl:port>
+      <wsdl:port name="DolParcelSOAPHttpEndpoint" binding="ns:DolParcelSOAPHttpBinding">
+         <http:address location="http://164.115.20.131/adxgateway/services/DolParcelSOAP.DolParcelSOAPHttpEndpoint"></http:address>
+      </wsdl:port>
+   </wsdl:service>
+</wsdl:definitions>

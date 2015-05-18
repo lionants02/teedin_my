@@ -68,17 +68,19 @@ public class getTeedinService {
         return out;
     }    
 
+    private static PackParcel getArea(java.lang.String provincecode, java.lang.String amphoecode, java.lang.String ns4No) {
+        com.nectec.ssi.max.teedinpack.DolParcelSOAP service = new com.nectec.ssi.max.teedinpack.DolParcelSOAP();
+        com.nectec.ssi.max.teedinpack.DolParcelSOAPPortType port = service.getDolParcelSOAPHttpSoap11Endpoint();
+        return port.getArea(provincecode, amphoecode, ns4No);
+    }
+
     private static PackParcel getParcel(java.lang.String provincecode, java.lang.String amphoecode, java.lang.String ns4No) {
-        com.nectec.ssi.max.teedinpack.DolParcelADX service = new com.nectec.ssi.max.teedinpack.DolParcelADX();
-        com.nectec.ssi.max.teedinpack.DolParcelADXPortType port = service.getDolParcelADXHttpsSoap11Endpoint();
+        com.nectec.ssi.max.teedinpack.DolParcelSOAP service = new com.nectec.ssi.max.teedinpack.DolParcelSOAP();
+        com.nectec.ssi.max.teedinpack.DolParcelSOAPPortType port = service.getDolParcelSOAPHttpSoap11Endpoint();
         return port.getParcel(provincecode, amphoecode, ns4No);
     }
 
-    private static PackParcel getArea(java.lang.String provincecode, java.lang.String amphoecode, java.lang.String ns4No) {
-        com.nectec.ssi.max.teedinpack.DolParcelADX service = new com.nectec.ssi.max.teedinpack.DolParcelADX();
-        com.nectec.ssi.max.teedinpack.DolParcelADXPortType port = service.getDolParcelADXHttpsSoap11Endpoint();
-        return port.getArea(provincecode, amphoecode, ns4No);
-    }
+    
  
 
 }
